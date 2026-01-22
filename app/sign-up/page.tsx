@@ -14,7 +14,7 @@ export default function SignUp() {
                     <CardTitle className="flex flex-col items-center text-2xl font-bold text-black">
                         Create your free account
                     </CardTitle>
-                    <CardDescription className="text-gray-600">
+                    <CardDescription className="flex flex-col items-center text-gray-600">
                         Create an account to start tracking your job applications.
                     </CardDescription>
                 </CardHeader>
