@@ -18,7 +18,7 @@ export const sessions = pgTable("sessions", {
     token: text("token").notNull().unique(),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
-    ipAddress: text("ip_address").notNull(),
+    ipAddress: text("ip_address"),
     userAgent: text("user_agent"),
     userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
 });
@@ -28,7 +28,7 @@ export const accounts = pgTable("accounts", {
     accountId: text("account_id").notNull().unique(),
     providerId: text("provider_id").notNull(),
     userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
-    accessToken: text("access_token").notNull(),
+    accessToken: text("access_token"),
     refreshToken: text("refresh_token"),
     idToken: text("id_token"),
     accessTokenExpiresAt: timestamp("access_token_expires_at"),
