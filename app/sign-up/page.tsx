@@ -56,7 +56,7 @@ export default function SignUp() {
                         Create an account to start tracking your job applications.
                     </CardDescription>
                 </CardHeader>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-4">
                         {error && (
                             <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive">
