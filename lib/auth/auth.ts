@@ -4,6 +4,7 @@ import { db } from "../db";
 import { users, accounts, sessions, verificationTokens } from "../db/schema";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { initUserBoard } from "../init-user-board";
 
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
@@ -18,6 +19,17 @@ export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
     },
+    databaseHooks: {
+        user: {
+            create: {
+                after: async (user) => {
+                    if (user.id) {
+                        await initUserBoard(user.id);
+                    }
+                }
+            }
+        }
+    }
 });
 
 export async function getSession() {
